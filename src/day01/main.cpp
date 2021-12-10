@@ -7,7 +7,7 @@
 
 #include "day01.hpp"
 
-std::vector<int> read_input(const std::string_view filename)
+[[nodiscard]] std::vector<int> read_input(const std::string_view filename)
 {
     std::ifstream input{filename.data()};
 
@@ -49,5 +49,6 @@ int main(int argc, char* argv[])
 
     std::vector<int> measurements = read_input(filename.value());
 
-    std::cout << "day 01: " << day01(measurements) << '\n';
+    std::cout << "day 01, part 1: " << day01_part1(measurements) << '\n';
+    std::cout << "day 01, part 2: " << day01_part2(measurements) << '\n';
 }
