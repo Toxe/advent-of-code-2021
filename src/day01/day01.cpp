@@ -9,7 +9,7 @@ int sum_of_window(const std::vector<int>::const_iterator& it, const int window_s
 
 int compare_measurements(const std::vector<int>& measurements, const int window_size)
 {
-    if (measurements.size() < window_size + 1)
+    if (std::ssize(measurements) < window_size + 1)
         return 0;
 
     int count = 0;
