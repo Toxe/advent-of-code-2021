@@ -55,4 +55,5 @@ int main(int argc, char* argv[])
     std::vector<Command> commands = parse_lines(read_lines(filename.value()));
 
     std::cout << "day 02, part 1: " << day02_part1(commands) << '\n';
+    std::cout << "day 02, part 2: " << day02_part2(commands) << '\n';
 }

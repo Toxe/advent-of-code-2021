@@ -80,3 +80,87 @@ TEST_CASE("part 1")
         CHECK(day02_part1(commands) == 10);
     }
 }
+
+TEST_CASE("part 2")
+{
+    SECTION("works with example input")
+    {
+        std::vector<Command> commands = {
+            Command{Direction::forward, 5},
+            Command{Direction::down, 5},
+            Command{Direction::forward, 8},
+            Command{Direction::up, 3},
+            Command{Direction::down, 8},
+            Command{Direction::forward, 2},
+        };
+
+        CHECK(day02_part2(commands) == 900);
+    }
+
+    SECTION("returns 0 if there are no commands")
+    {
+        CHECK(day02_part2({}) == 0);
+    }
+
+    SECTION("returns 0 if there are no horizontal commands")
+    {
+        std::vector<Command> commands = {
+            Command{Direction::down, 1},
+            Command{Direction::down, 1},
+        };
+
+        CHECK(day02_part2(commands) == 0);
+    }
+
+    SECTION("returns 0 if there are no depth commands")
+    {
+        std::vector<Command> commands = {
+            Command{Direction::forward, 1},
+            Command{Direction::forward, 1},
+        };
+
+        CHECK(day02_part2(commands) == 0);
+    }
+
+    SECTION("adds up horizontal commands")
+    {
+        std::vector<Command> commands = {
+            Command{Direction::down, 1},
+            Command{Direction::forward, 1},
+            Command{Direction::forward, 1},
+            Command{Direction::forward, 1},
+        };
+
+        CHECK(day02_part2(commands) == 9);
+    }
+
+    SECTION("adds up depth commands")
+    {
+        std::vector<Command> commands = {
+            Command{Direction::down, 1},
+            Command{Direction::down, 1},
+            Command{Direction::down, 1},
+            Command{Direction::forward, 2},
+        };
+
+        CHECK(day02_part2(commands) == 12);
+    }
+
+    SECTION("depth commands work")
+    {
+        std::vector<Command> commands = {
+            Command{Direction::down, 5},
+            Command{Direction::forward, 1},
+            Command{Direction::up, 3},
+            Command{Direction::forward, 1},
+            Command{Direction::down, 2},
+            Command{Direction::forward, 1},
+            Command{Direction::up, 8},
+            Command{Direction::forward, 1},
+            Command{Direction::down, 5},
+            Command{Direction::forward, 1},
+        };
+
+        CHECK(day02_part2(commands) == 40);
+    }
+}

@@ -14,3 +14,4 @@ struct Command {
 };
 
 int day02_part1(const std::vector<Command>& commands);
+int day02_part2(const std::vector<Command>& commands);
