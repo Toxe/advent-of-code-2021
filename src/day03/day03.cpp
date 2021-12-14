@@ -3,7 +3,6 @@
 #include <algorithm>
 #include <functional>
 #include <limits>
-#include <vector>
 
 std::size_t count_ones_in_column(const std::vector<unsigned int>& numbers, const int column)
 {

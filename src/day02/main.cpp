@@ -1,5 +1,4 @@
 #include <iostream>
-#include <optional>
 
 #include "input_filename.hpp"
 #include "read_input.hpp"
