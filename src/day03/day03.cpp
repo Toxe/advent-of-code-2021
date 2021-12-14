@@ -9,7 +9,7 @@ std::size_t count_ones_in_column(const std::vector<unsigned int>& numbers, const
 {
     const unsigned int bit = 1 << column;
 
-    return std::count_if(numbers.cbegin(), numbers.cend(), [=](const auto n) { return (n & bit) == bit; });
+    return static_cast<size_t>(std::count_if(numbers.cbegin(), numbers.cend(), [=](const auto n) { return (n & bit) == bit; }));
 }
 
 unsigned int day03_part1(const std::vector<unsigned int>& numbers, const int width)
@@ -45,8 +45,8 @@ unsigned int calculate_rating(std::vector<unsigned int> numbers, const int width
     while (numbers.size() > 1) {
         const unsigned int bit = 1 << column;
 
-        const size_t number_of_ones = count_ones_in_column(numbers, column);
-        const size_t number_of_zeros = numbers.size() - number_of_ones;
+        const std::size_t number_of_ones = count_ones_in_column(numbers, column);
+        const std::size_t number_of_zeros = numbers.size() - number_of_ones;
 
         if (compare(number_of_ones, number_of_zeros))
             std::erase_if(numbers, [=](const auto n) { return (n & bit) == 0; });
