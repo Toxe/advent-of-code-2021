@@ -16,5 +16,5 @@ int main(int argc, char* argv[])
     std::vector<unsigned int> numbers = read_binary_numbers(filename.value());
 
     std::cout << "day 03, part 1: " << day03_part1(numbers, 12) << '\n';
-    std::cout << "day 03, part 2: " << day03_part2(numbers, 12) << '\n';  // 2775870
+    std::cout << "day 03, part 2: " << day03_part2(numbers, 12) << '\n';
 }
