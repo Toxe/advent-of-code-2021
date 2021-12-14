@@ -1,6 +1,7 @@
 #include "day03.hpp"
 
 #include <algorithm>
+#include <functional>
 #include <limits>
 #include <vector>
 
@@ -34,4 +35,37 @@ unsigned int day03_part1(const std::vector<unsigned int>& numbers, const int wid
     const unsigned int epsilon_rate = mask ^ gamma_rate;
 
     return gamma_rate * epsilon_rate;
+}
+
+template <typename Compare>
+unsigned int calculate_rating(std::vector<unsigned int> numbers, const int width, const Compare compare)
+{
+    int column = width - 1;
+
+    while (numbers.size() > 1) {
+        const unsigned int bit = 1 << column;
+
+        const size_t number_of_ones = count_ones_in_column(numbers, column);
+        const size_t number_of_zeros = numbers.size() - number_of_ones;
+
+        if (compare(number_of_ones, number_of_zeros))
+            std::erase_if(numbers, [=](const auto n) { return (n & bit) == 0; });
+        else
+            std::erase_if(numbers, [=](const auto n) { return (n & bit) == bit; });
+
+        --column;
+    }
+
+    return numbers[0];
+}
+
+unsigned int day03_part2(const std::vector<unsigned int>& numbers, const int width)
+{
+    if (numbers.empty() || width < 1 || width > std::numeric_limits<unsigned int>::digits)
+        return 0;
+
+    const unsigned int oxygen_generator_rating = calculate_rating(numbers, width, std::greater_equal<>());
+    const unsigned int co2_scrubber_rating = calculate_rating(numbers, width, std::less<>());
+
+    return oxygen_generator_rating * co2_scrubber_rating;
 }
