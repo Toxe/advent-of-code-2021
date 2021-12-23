@@ -5,6 +5,8 @@
 class Board {
     std::array<int, 25> numbers_;
 
+    [[nodiscard]] int number_at(int column, int row) const;
+
     [[nodiscard]] bool is_winning_row(int row) const;
     [[nodiscard]] bool is_winning_column(int column) const;
 

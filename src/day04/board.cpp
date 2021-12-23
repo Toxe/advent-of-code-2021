@@ -8,15 +8,24 @@ void Board::mark_number(const int number)
     std::replace(numbers_.begin(), numbers_.end(), number, -1);
 }
 
+int Board::number_at(const int column, const int row) const
+{
+    return numbers_[column + row * 5];
+}
+
 bool Board::is_winning_row(const int row) const
 {
-    return std::all_of(numbers_.cbegin() + row * 5, numbers_.cbegin() + (row + 1) * 5, [](const int n) { return n < 0; });
+    for (int column = 0; column < 5; ++column)
+        if (number_at(column, row) >= 0)
+            return false;
+
+    return true;
 }
 
 bool Board::is_winning_column(const int column) const
 {
     for (int row = 0; row < 5; ++row)
-        if (numbers_[row * 5 + column] >= 0)
+        if (number_at(column, row) >= 0)
             return false;
 
     return true;
