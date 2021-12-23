@@ -72,9 +72,10 @@ int main(int argc, char* argv[])
     if (!filename.has_value())
         return 1;
 
-    std::vector<std::string> lines = read_lines(filename.value());
-    std::vector<int> random_numbers = read_random_numbers(lines);
-    std::vector<Board> boards = read_boards(lines);
+    const std::vector<std::string> lines = read_lines(filename.value());
+    const std::vector<int> random_numbers = read_random_numbers(lines);
+    const std::vector<Board> boards = read_boards(lines);
 
     std::cout << "day 04, part 1: " << day04_part1(random_numbers, boards) << '\n';
+    std::cout << "day 04, part 2: " << day04_part2(random_numbers, boards) << '\n';
 }
