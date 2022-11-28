@@ -4,7 +4,7 @@ set_target_properties(day01 PROPERTIES CXX_EXTENSIONS OFF)
 target_compile_features(day01 PUBLIC cxx_std_20)
 target_compile_options(day01 PRIVATE ${SANITIZER_FLAGS} ${DEFAULT_COMPILER_OPTIONS} ${DEFAULT_COMPILER_WARNINGS})
 target_link_options(day01 PRIVATE ${SANITIZER_FLAGS})
-target_link_libraries(day01 PRIVATE common)
+target_link_libraries(day01 PRIVATE LIB_shared)
 
 # Tests
 if (BUILD_TESTING)
