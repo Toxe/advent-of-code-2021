@@ -8,7 +8,7 @@ add_executable(day04
 
 set_target_properties(day04 PROPERTIES CXX_EXTENSIONS OFF)
 target_compile_features(day04 PUBLIC cxx_std_20)
-target_compile_options(day04 PRIVATE ${SANITIZER_FLAGS} ${DEFAULT_COMPILER_OPTIONS_AND_WARNINGS})
+target_compile_options(day04 PRIVATE ${SANITIZER_FLAGS} ${DEFAULT_COMPILER_OPTIONS} ${DEFAULT_COMPILER_WARNINGS})
 target_link_options(day04 PRIVATE ${SANITIZER_FLAGS})
 target_link_libraries(day04 PRIVATE common)
 
@@ -24,7 +24,7 @@ if (BUILD_TESTING)
 
     set_target_properties(day04_tests PROPERTIES CXX_EXTENSIONS OFF)
     target_compile_features(day04_tests PUBLIC cxx_std_20)
-    target_compile_options(day04_tests PRIVATE ${SANITIZER_FLAGS} ${DEFAULT_COMPILER_OPTIONS_AND_WARNINGS})
+    target_compile_options(day04_tests PRIVATE ${SANITIZER_FLAGS} ${DEFAULT_COMPILER_OPTIONS} ${DEFAULT_COMPILER_WARNINGS})
     target_link_options(day04_tests PRIVATE ${SANITIZER_FLAGS})
     target_link_libraries(day04_tests PRIVATE Catch2::Catch2WithMain)
 
